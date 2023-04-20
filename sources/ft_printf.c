@@ -6,7 +6,7 @@
 /*   By: abruere <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:26:28 by abruere           #+#    #+#             */
-/*   Updated: 2023/04/19 21:25:13 by abruere          ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 12:27:11 by abruere          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,8 @@ int	ft_printf(const char *s, ...)
 		return (0);
 	while (t[++i] && (t[i] == '%' && t[i + 1] == '%'))
 	{
-		if (t[i] == '%' && ft_strchr("cspdiuxX%", t[i + 1]) == 0)
-		{
-			ft_putstr_fd("Error: '%' alone is not allowed in ft_printf.", 2);
-			return (0);
-		}
+		if (t[i] == '%' && (ft_strchr("cspdiuxX%", t[i + 1]) == 0 || !t[i + 1]))
+			return (free(t), -1);
 	}
 	free(t);
 	i = 0;

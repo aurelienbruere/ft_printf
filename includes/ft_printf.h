@@ -6,7 +6,7 @@
 /*   By: abruere <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:15:28 by abruere           #+#    #+#             */
-/*   Updated: 2023/04/19 21:28:36 by abruere          ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 11:18:53 by abruere          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <limits.h>
 
 int		ft_printf(const char *str, ...);
 
