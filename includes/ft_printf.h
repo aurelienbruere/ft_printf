@@ -6,7 +6,7 @@
 /*   By: abruere <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:15:28 by abruere           #+#    #+#             */
-/*   Updated: 2023/04/20 11:18:53 by abruere          ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 14:56:28 by abruere          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 int		ft_printf(const char *str, ...);
 
-char	*ft_strdup(const char *s1);
+char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);

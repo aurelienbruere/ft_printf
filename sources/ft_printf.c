@@ -6,7 +6,7 @@
 /*   By: abruere <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:26:28 by abruere           #+#    #+#             */
-/*   Updated: 2023/04/20 13:09:26 by abruere          ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 15:16:42 by abruere          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ void	ft_parsing(int *i, int e, const char *s, va_list args)
 				*i += ft_putdiu(va_arg(args, int), s[1], &e, 1);
 			else if (s[1] == 'u')
 				*i += ft_putdiu(va_arg(args, unsigned), s[1], &e, 1);
-			else if (s[1] == 'x')
-				*i += ft_putx(va_arg(args, unsigned), 'x', &e, 1);
-			else if (s[1] == 'X')
-				*i += ft_putx(va_arg(args, unsigned), 'X', &e, 1);
+			else if (s[1] == 'x' || s[1] == 'X')
+				*i += ft_putx(va_arg(args, unsigned), s[1], &e, 1);
 			else if (s[1] == '%')
 				*i += ft_putc(s[1], &e, 1);
 			s += 2;
@@ -45,17 +43,20 @@ int	ft_printf(const char *s, ...)
 {
 	int		i;
 	int		e;
+	char	*t;
 	va_list	args;
 
 	if (!s)
 		return (-1);
-	i = -1;
-	while (s[++i] && (s[i] == '%' && s[i + 1] == '%'))
-	{
-		if (s[i] == '%' && (ft_strchr("cspdiuxX%", s[i + 1]) == 0 || !s[i + 1]))
-			return (-1);
-	}
+	t = ft_strdup(s);
+	if (!t)
+		return (-1);
 	i = 0;
+	if (ft_strlen(t) == 1 && t[0] == '%')
+		return (free(t), -1);
+	else if (ft_strlen(t) >= 2 && t[ft_strlen(t) - 2] != '%' && t[ft_strlen(t) - 1] == '%')
+		return (free(t), -1);
+	free(t);
 	e = 1;
 	va_start(args, s);
 	ft_parsing(&i, e, s, args);

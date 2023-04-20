@@ -23,8 +23,8 @@ LIB		= $(addprefix $(DIR_LIB)/, \
 			ft_putnbr_fd.c	\
 			ft_putstr_fd.c	\
 			ft_strchr.c	\
-			ft_strlen.c	\
 			ft_strdup.c	\
+			ft_strlen.c	\
 			)
 LIB_OBJS	= $(LIB:.c=.o)
 
