@@ -6,7 +6,7 @@
 /*   By: abruere <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:26:28 by abruere           #+#    #+#             */
-/*   Updated: 2023/04/20 12:27:11 by abruere          ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 13:09:26 by abruere          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,16 @@ int	ft_printf(const char *s, ...)
 {
 	int		i;
 	int		e;
-	char	*t;
 	va_list	args;
 
+	if (!s)
+		return (-1);
 	i = -1;
-	t = ft_strdup(s);
-	if (!t)
-		return (0);
-	while (t[++i] && (t[i] == '%' && t[i + 1] == '%'))
+	while (s[++i] && (s[i] == '%' && s[i + 1] == '%'))
 	{
-		if (t[i] == '%' && (ft_strchr("cspdiuxX%", t[i + 1]) == 0 || !t[i + 1]))
-			return (free(t), -1);
+		if (s[i] == '%' && (ft_strchr("cspdiuxX%", s[i + 1]) == 0 || !s[i + 1]))
+			return (-1);
 	}
-	free(t);
 	i = 0;
 	e = 1;
 	va_start(args, s);
