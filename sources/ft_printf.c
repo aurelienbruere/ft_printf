@@ -6,7 +6,7 @@
 /*   By: abruere <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 10:26:28 by abruere           #+#    #+#             */
-/*   Updated: 2023/04/20 15:16:42 by abruere          ###   ########lyon.fr   */
+/*   Updated: 2023/04/20 16:34:18 by abruere          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	ft_printf(const char *s, ...)
 	i = 0;
 	if (ft_strlen(t) == 1 && t[0] == '%')
 		return (free(t), -1);
-	else if (ft_strlen(t) >= 2 && t[ft_strlen(t) - 2] != '%' && t[ft_strlen(t) - 1] == '%')
+	else if (ft_strlen(t) >= 2 && t[ft_strlen(t) - 2] != '%'
+		&& t[ft_strlen(t) - 1] == '%')
 		return (free(t), -1);
 	free(t);
 	e = 1;
